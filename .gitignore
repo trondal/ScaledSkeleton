@@ -7,3 +7,4 @@ vendor/
 composer.lock
 config/autoload/local.php
 nbproject/
+data/
