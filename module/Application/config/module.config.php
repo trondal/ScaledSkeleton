@@ -41,6 +41,21 @@ return array(
             ),
         ),
     ),
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+                'restart' => array(
+                    'options' => array(
+                        'route' => 'db restart',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\Console',
+                            'action' => 'dropcreate'
+                        )
+                    )
+                )
+            )
+        )
+    ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
@@ -60,6 +75,9 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ),
+        'factories' => array(
+            'Application\Controller\Console' => 'Application\Controller\Factory\Console'
+        )
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
