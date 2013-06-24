@@ -1,7 +1,0 @@
-{
-    "minimum-stability": "stable",
-    "require": {
-        "zendframework/zendframework": "*",
-        "doctrine/doctrine-orm-module": "*"
-    }
-}
