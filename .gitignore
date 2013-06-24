@@ -9,4 +9,4 @@ config/autoload/local.php
 nbproject/
 data/
 .DS_Store
-composer.json
+composer.json.dist

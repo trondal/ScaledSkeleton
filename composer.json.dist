@@ -1,6 +1,0 @@
-{
-    "require": {
-        "zendframework/zendframework": "*",
-        "doctrine/doctrine-orm-module": "*"
-    }
-}
