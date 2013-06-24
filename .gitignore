@@ -10,3 +10,4 @@ nbproject/
 data/
 .DS_Store
 composer.json
+config/application.config.php

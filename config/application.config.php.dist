@@ -3,7 +3,6 @@
 return array(
     'modules' => array(
         'Application',
-        'NorCup',
         'DoctrineModule',
         'DoctrineORMModule'
     ),
