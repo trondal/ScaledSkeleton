@@ -99,10 +99,17 @@ return array(
     ),
     'doctrine' => array(
         'driver' => array(
-            'orm_default' => array(
+            //Configure the mapping driver for entities in Application module
+            'app_entities' => array(
                 'paths' => array(
                     __DIR__ . '/../src/' . __NAMESPACE__ . '/Entity'
                 ),
+            ),
+            //Add configured driver to orm_default entity manager
+            'orm_default' => array(
+                'drivers' => array(
+                    'Application\Entity' => 'app_entities'
+                )
             ),
         ),
     )

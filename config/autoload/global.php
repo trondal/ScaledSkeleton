@@ -5,7 +5,6 @@ namespace Application;
 return array(
     'doctrine' => array(
         'connection' => array(
-            // default connection name
             'orm_default' => array(
                 'configuration' => 'orm_default',
                 'eventmanager' => 'orm_default',
