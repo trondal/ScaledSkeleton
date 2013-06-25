@@ -12,7 +12,7 @@ class Console implements FactoryInterface {
     public function createService(ServiceLocatorInterface $services) {
         $serviceLocator = $services->getServiceLocator();
 
-        $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
+        $em = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $tool = new SchemaTool($em);
 
         $controller = new ConsoleController;

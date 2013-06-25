@@ -48,7 +48,7 @@ return array(
             'routes' => array(
                 'restart' => array(
                     'options' => array(
-                        'route' => 'db restart',
+                        'route' => 'application reset db',
                         'defaults' => array(
                             'controller' => __NAMESPACE__ . '\Controller\Console',
                             'action' => 'dropcreate'
