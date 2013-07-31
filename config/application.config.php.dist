@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 return array(
     'modules' => array(
         'Application',
@@ -11,12 +13,12 @@ return array(
         'module_map_cache_enabled' => getenv('APPLICATION_ENV') === 'production' ? true: false,
         'cache_dir'                => sys_get_temp_dir(),
         'config_glob_paths'    => array(
-            'config/autoload/{,*.}{global,local}.php',
-            'config/autoload/{,*.}' . (getenv('APPLICATION_ENV') ?: 'production') . '.php',
+            __DIR__ . '/../config/autoload/{,*.}{global,local}.php',
+            __DIR__ . '/../config/autoload/{,*.}' . (getenv('APPLICATION_ENV') === 'development' ? 'development': 'production') . '.php',
         ),
         'module_paths' => array(
-            './module',
-            './vendor',
+            __DIR__ . '/../module',
+            __DIR__ . '/../vendor',
         ),
     ),
 );

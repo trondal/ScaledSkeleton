@@ -4,10 +4,11 @@ README.txt
 demos/
 extras/documentation
 vendor/
-composer.lock
 config/autoload/local.php
 nbproject/
 data/
 .DS_Store
 composer.json
+composer.phar
+composer.lock
 config/application.config.php

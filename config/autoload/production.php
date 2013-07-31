@@ -19,14 +19,13 @@ return array(
                 'generate_proxies' => false,
                 'proxy_dir' => sys_get_temp_dir(),
                 'proxy_namespace' => 'DoctrineORMModule\Proxy',
-                'filters' => array()
+                'filters' => array(),
             )
         ),
         'driver' => array(
             'orm_default' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'apc',
-                'paths' => array(),
+                'class' => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                'drivers' => array()
             )
         ),
         'entitymanager' => array(
