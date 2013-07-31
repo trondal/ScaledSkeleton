@@ -2,11 +2,10 @@
 
 namespace ApplicationTest;
 
+use RuntimeException;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use Zend\Stdlib\ArrayUtils;
-use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
@@ -22,37 +21,8 @@ class Bootstrap {
      * @return void
      */
     public static function init() {
-
-        // Load the user-defined test configuration file, if it exists.
-        if (is_readable(__DIR__ . '/TestConfig.php')) {
-            $testConfig = include __DIR__ . '/TestConfig.php';
-        } else {
-            $testConfig = include __DIR__ . '/TestConfig.php.dist';
-        }
-
-        $zf2ModulePaths = array();
-
-        if (isset($testConfig['module_listener_options']['module_paths'])) {
-            $modulePaths = $testConfig['module_listener_options']['module_paths'];
-            foreach ($modulePaths as $modulePath) {
-                if (($path = static::findParentPath($modulePath))) {
-                    $zf2ModulePaths[] = $path;
-                }
-            }
-        }
-
-        $zf2ModulePaths = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
-
+        $config = include __DIR__ . '/../../../config/application.config.php.dist';
         static::initAutoloader();
-
-        // Use ModuleManager to load this module and it's dependencies.
-        $baseConfig = array(
-            'module_listener_options' => array(
-                'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
-            ),
-        );
-
-        $config = ArrayUtils::merge($baseConfig, $testConfig);
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
@@ -67,7 +37,7 @@ class Bootstrap {
     /**
      * Get application's servicemanager.
      *
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return ServiceManager
      */
     public static function getServiceManager() {
         return static::$serviceManager;
@@ -122,4 +92,4 @@ class Bootstrap {
 
 }
 
-Bootstrap::init();
+\ApplicationTest\Bootstrap::init();

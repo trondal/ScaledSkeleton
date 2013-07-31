@@ -24,7 +24,7 @@ abstract class HttpControllerTestCase extends AbstractHttpControllerTestCase {
 
     public function setUp() {
 	$this->setApplicationConfig(
-		include 'TestConfig.php'
+            include __DIR__ .'/../../../config/application.config.php.dist'
 	);
 	$this->sm = $this->getApplication()->getServiceManager();
 	$this->em = $this->sm->get('Doctrine\ORM\EntityManager');
