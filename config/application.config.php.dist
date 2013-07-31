@@ -7,8 +7,12 @@ return array(
         'DoctrineORMModule'
     ),
     'module_listener_options' => array(
+        'config_cache_enabled'     => getenv('APPLICATION_ENV') === 'production' ? true: false,
+        'module_map_cache_enabled' => getenv('APPLICATION_ENV') === 'production' ? true: false,
+        'cache_dir'                => sys_get_temp_dir(),
         'config_glob_paths'    => array(
             'config/autoload/{,*.}{global,local}.php',
+            'config/autoload/{,*.}' . (getenv('APPLICATION_ENV') ?: 'production') . '.php',
         ),
         'module_paths' => array(
             './module',

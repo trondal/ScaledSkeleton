@@ -12,9 +12,9 @@ return array(
         ),
         'configuration' => array(
             'orm_default' => array(
-                'metadata_cache' => 'array',
-                'query_cache' => 'array',
-                'result_cache' => 'array',
+                'metadata_cache' => 'apc',
+                'query_cache' => 'apc',
+                'result_cache' => 'apc',
                 'driver' => 'orm_default',
                 'generate_proxies' => false,
                 'proxy_dir' => sys_get_temp_dir(),
@@ -25,7 +25,7 @@ return array(
         'driver' => array(
             'orm_default' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
+                'cache' => 'apc',
                 'paths' => array(),
             )
         ),
