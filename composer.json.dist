@@ -2,6 +2,7 @@
     "minimum-stability": "stable",
     "require": {
         "zendframework/zendframework": "*",
-        "doctrine/doctrine-orm-module": "*"
+        "doctrine/doctrine-orm-module": "*",
+        "evandotpro/edp-module-layouts": "*"
     }
 }

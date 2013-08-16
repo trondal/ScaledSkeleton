@@ -5,43 +5,29 @@ namespace Application;
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/',
-                    'defaults' => array(
-                        'controller' => __NAMESPACE__ . '\Controller\Index',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
             'application' => array(
-                'type' => 'Literal',
+                'type' => 'Zend\Mvc\Router\Http\Hostname',
                 'options' => array(
-                    'route' => '/application',
+                    'route' => 'application.[:opt1.][:opt2.][:opt3.]:tld',
                     'defaults' => array(
                         '__NAMESPACE__' => __NAMESPACE__ . '\Controller',
-                        'controller' => 'Index',
-                        'action' => 'index',
-                    ),
+                    )
                 ),
-                'may_terminate' => true,
+                'may_terminate' => false,
                 'child_routes' => array(
-                    'default' => array(
-                        'type' => 'Segment',
+                    'index' => array(
+                        'type' => 'Literal',
                         'options' => array(
-                            'route' => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
+                            'route' => '/',
                             'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
+                                'controller' => __NAMESPACE__ .'\Controller\Index',
+                                'action' => 'index',
+                            )
+                        )
+                    )
+                )
+            )
+        )
     ),
     'console' => array(
         'router' => array(
@@ -75,10 +61,10 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            __NAMESPACE__ . '\Controller\Index' => __NAMESPACE__ . '\Controller\IndexController'
+            __NAMESPACE__ . '\Controller\Index' => __NAMESPACE__ .'\Controller\IndexController'
         ),
         'factories' => array(
-            'Application\Controller\Console' => 'Application\Controller\Factory\Console'
+            __NAMESPACE__ .'\Controller\Console' => __NAMESPACE__ .'\Controller\Factory\Console'
         )
     ),
     'view_manager' => array(
@@ -88,7 +74,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'application/layout' => __DIR__ . '/../view/layout/application.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
@@ -96,6 +82,9 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+    ),
+    'module_layouts' => array(
+        __NAMESPACE__ => 'application/layout'
     ),
     'doctrine' => array(
         'driver' => array(

@@ -5,6 +5,7 @@ namespace Application;
 return array(
     'modules' => array(
         'Application',
+        'EdpModuleLayouts',
         'DoctrineModule',
         'DoctrineORMModule'
     ),
