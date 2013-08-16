@@ -45,9 +45,7 @@ return array(
         )
     ),
     'service_manager' => array(
-        'factories' => array(
-            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-        ),
+        'factories' => array()
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -56,6 +54,7 @@ return array(
                 'type' => 'phparray',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern' => '%s.php',
+                'text_domain' => __NAMESPACE__
             ),
         ),
     ),
