@@ -24,9 +24,8 @@ return array(
         ),
         'driver' => array(
             'orm_default' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(),
+                'class' => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                'drivers' => array()
             )
         ),
         'entitymanager' => array(
