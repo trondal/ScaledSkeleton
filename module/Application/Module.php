@@ -2,10 +2,11 @@
 
 namespace Application;
 
+use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class Module {
+class Module implements ConsoleUsageProviderInterface {
 
     public function onBootstrap(MvcEvent $e) {
         $eventManager = $e->getApplication()->getEventManager();
@@ -24,6 +25,12 @@ class Module {
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+
+    public function getConsoleUsage(\Zend\Console\Adapter\AdapterInterface $console) {
+        return array(
+            'application reset db' => 'Reset the database',
         );
     }
 
