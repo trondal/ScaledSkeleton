@@ -3,6 +3,9 @@
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
  */
+//turn off soap caching
+ini_set("soap.wsdl_cache_enabled", 0);
+
 chdir(dirname(__DIR__));
 
 // Setup autoloading
