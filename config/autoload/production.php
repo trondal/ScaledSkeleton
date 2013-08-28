@@ -25,7 +25,7 @@ return array(
         'driver' => array(
             'app_default' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
+                'cache' => 'apc',
                 'paths' => array(
                     __DIR__ . '/../../module/Application/src/Application/Entity'
                 )

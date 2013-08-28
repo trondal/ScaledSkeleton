@@ -23,9 +23,15 @@ return array(
             )
         ),
         'driver' => array(
+            'app_default' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(
+                    __DIR__ . '/../../module/Application/src/Application/Entity'
+                )
+            ),
             'orm_default' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\DriverChain',
-                'drivers' => array()
+                'drivers' => array('Application\Entity' => 'app_default')
             )
         ),
         'entitymanager' => array(
