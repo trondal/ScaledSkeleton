@@ -27,22 +27,7 @@ return array(
                     )
                 )
             )
-        )
-    ),
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-                'restart' => array(
-                    'options' => array(
-                        'route' => 'application reset db',
-                        'defaults' => array(
-                            'controller' => __NAMESPACE__ . '\Controller\Console',
-                            'action' => 'dropcreate'
-                        )
-                    )
-                )
-            )
-        )
+        ),
     ),
     'service_manager' => array(
         'factories' => array()
@@ -62,9 +47,6 @@ return array(
         'invokables' => array(
             __NAMESPACE__ . '\Controller\Index' => __NAMESPACE__ .'\Controller\IndexController'
         ),
-        'factories' => array(
-            __NAMESPACE__ .'\Controller\Console' => __NAMESPACE__ .'\Controller\Factory\Console'
-        )
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
@@ -86,20 +68,4 @@ return array(
     'module_layouts' => array(
         __NAMESPACE__ => 'application/layout'
     ),
-    'doctrine' => array(
-        'driver' => array(
-            //Configure the mapping driver for entities in Application module
-            'app_entities' => array(
-                'paths' => array(
-                    __DIR__ . '/../src/' . __NAMESPACE__ . '/Entity'
-                ),
-            ),
-            //Add configured driver to orm_default entity manager
-            'orm_default' => array(
-                'drivers' => array(
-                    'Application\Entity' => 'app_entities'
-                )
-            ),
-        ),
-    )
 );

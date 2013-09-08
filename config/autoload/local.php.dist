@@ -3,14 +3,43 @@
 return array(
     'doctrine' => array(
         'connection' => array(
-            'orm_default' => array(
+            'orm_app' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOPgSql\Driver',
                 'params' => array(
                     'host' => '',
-                    'port' => '5432',
+                    'port' => '',
                     'user' => '',
                     'password' => '',
                     'dbname' => ''
+                )
+            )
+        ),
+        'entitymanager' => array(
+            'orm_app' => array(
+                'connection' => 'orm_app',
+                'configuration' => 'orm_app'
+            )
+        ),
+        'configuration' => array(
+            'orm_app' => array(
+                'driver' => 'orm_app',
+                'proxy_dir' => sys_get_temp_dir(),
+                'proxy_namespace' => 'DoctrineORMModule\Proxy',
+                'filters' => array()
+            )
+        ),
+        'driver' => array(
+            'app_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(
+                    __DIR__ . '/../../module/Application/src/Application/Entity'
+                )
+            ),
+            'orm_app' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                'drivers' => array(
+                    'Application\Entity' => 'app_driver'
                 )
             )
         )

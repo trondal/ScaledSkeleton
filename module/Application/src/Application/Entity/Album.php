@@ -2,14 +2,13 @@
 
 namespace Application\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="test")
+ * @ORM\Table(name="album")
  */
-class Service {
+class Album {
 
     /**
      * @ORM\Id
