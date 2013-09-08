@@ -2,6 +2,14 @@
 
 namespace Application;
 
+if (!getenv('APPLICATION_ENV')) {
+    throw new \Exception('APPLICATION_ENV is not set. Refusing to run!');
+}
+if (!in_array(getenv('APPLICATION_ENV'), array('production', 'development'))) {
+    throw new \Exception("APPLICATION_ENV must be either 'production' or 
+        'development'! Detected '".  getenv('APPLICATION_ENV')."'");
+}
+
 return array(
     'modules' => array(
         'Application',
