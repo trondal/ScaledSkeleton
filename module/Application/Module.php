@@ -8,13 +8,11 @@ use DoctrineORMModule\Service\ConfigurationFactory;
 use DoctrineORMModule\Service\DBALConnectionFactory;
 use DoctrineORMModule\Service\EntityManagerFactory;
 use DoctrineORMModule\Service\EntityResolverFactory;
-use Exception;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
 
 class Module implements BootstrapListenerInterface, ConfigProviderInterface, ServiceProviderInterface {
 
@@ -22,8 +20,6 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-
-        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkConfiguration'));
     }
 
     public function getConfig() {
@@ -42,15 +38,4 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
             )
         );
     }
-
-    public function checkConfiguration() {
-        if (!getenv('APPLICATION_ENV')) {
-            throw new Exception('APPLICATION_ENV is not set. Refusing to run!');
-        }
-        if (!in_array(getenv('APPLICATION_ENV'), array('production', 'development'))) {
-            throw new Exception("APPLICATION_ENV must be either 'production' or 
-        'development'! Detected '" . getenv('APPLICATION_ENV') . "'");
-        }
-    }
-
 }

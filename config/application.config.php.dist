@@ -1,25 +1,47 @@
 <?php
 
+/**
+ * This file is read and used immidiately, and is not merged with other 
+ * configuration. As such, it cannot be overridden by a module.
+ */
+
 namespace Application;
 
+if (!getenv('APPLICATION_ENV')) {
+    echo 'APPLICATION_ENV is not set!';
+    exit;
+}
+
+if (!in_array(getenv('APPLICATION_ENV'), array('production', 'development'))) {
+    echo "APPLICATION_ENV must be either 'production' or 'development'!";
+    exit;
+}
+$env = getenv('APPLICATION_ENV');
+
+$modules = array(
+    'Application',
+    'EdpModuleLayouts',
+    'DoctrineModule',
+    'DoctrineORMModule'
+);
+
+if ($env == 'development') {
+    $modules[] = 'ZendDeveloperTools';
+}
+
 return array(
-    'modules' => array(
-        'Application',
-        'EdpModuleLayouts',
-        'DoctrineModule',
-        'DoctrineORMModule'
-    ),
+    'modules' => $modules,
     'module_listener_options' => array(
-        'config_cache_enabled'     => getenv('APPLICATION_ENV') === 'production' ? true: false,
-        'module_map_cache_enabled' => getenv('APPLICATION_ENV') === 'production' ? true: false,
+        'config_cache_enabled'     => $env === 'production' ? true: false,
+        'module_map_cache_enabled' => $env === 'production' ? true: false,
         'cache_dir'                => sys_get_temp_dir(),
         'config_glob_paths'    => array(
             __DIR__ . '/../config/autoload/{,*.}{global,local}.php',
-            __DIR__ . '/../config/autoload/{,*.}' . (getenv('APPLICATION_ENV') === 'development' ? 'development': 'production') . '.php',
+            __DIR__ . '/../config/autoload/{,*.}' . $env . '.php',
         ),
         'module_paths' => array(
             __DIR__ . '/../module',
             __DIR__ . '/../vendor',
-        ),
-    ),
+        )
+    )
 );

@@ -20,7 +20,7 @@ return array(
                         'options' => array(
                             'route' => '/',
                             'defaults' => array(
-                                'controller' => __NAMESPACE__ .'\Controller\Index',
+                                'controller' => __NAMESPACE__ . '\Controller\Index',
                                 'action' => 'index',
                             )
                         )
@@ -45,12 +45,10 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            __NAMESPACE__ . '\Controller\Index' => __NAMESPACE__ .'\Controller\IndexController'
+            __NAMESPACE__ . '\Controller\Index' => __NAMESPACE__ . '\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions' => true,
         'doctype' => 'HTML5',
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
@@ -68,4 +66,34 @@ return array(
     'module_layouts' => array(
         __NAMESPACE__ => 'application/layout'
     ),
+    'doctrine' => array(
+        'entitymanager' => array(
+            'orm_app' => array(
+                'connection' => 'orm_app',
+                'configuration' => 'orm_app'
+            )
+        ),
+        'configuration' => array(
+            'orm_app' => array(
+                'driver' => 'orm_app',
+                'proxy_dir' => sys_get_temp_dir(),
+                'proxy_namespace' => 'DoctrineORMModule\Proxy',
+                'filters' => array()
+            )
+        ),
+        'driver' => array(
+            'app_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'paths' => array(
+                    __DIR__ . '/../../module/Application/src/Application/Entity'
+                )
+            ),
+            'orm_app' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                'drivers' => array(
+                    'Application\Entity' => 'app_driver'
+                )
+            )
+        )
+    )
 );
