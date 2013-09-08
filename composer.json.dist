@@ -1,8 +1,25 @@
 {
+    "name": "scaled/skeleton",
+    "description": "Skeleton ready for module development. Doctrine2 ready",
+    "keywords": ["ScaledSkeleton", "Skeleton", "Doctrine2"],
+    "type": "Skeleton",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Trond Albinussen",
+            "email": "trond.albinussen@gmail.com",
+            "role": "System Architect"
+        }
+    ],
     "minimum-stability": "stable",
     "require": {
-        "zendframework/zendframework": "*",
+        "zendframework/zendframework": "2.2.*",
         "doctrine/doctrine-orm-module": "*",
         "evandotpro/edp-module-layouts": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Application\\": "module/Application/src/"
+        }
     }
 }
