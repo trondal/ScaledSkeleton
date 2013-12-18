@@ -15,7 +15,6 @@
     "require": {
         "zendframework/zendframework": "2.2.*",
         "doctrine/doctrine-orm-module": "*",
-        "evandotpro/edp-module-layouts": "*"
     },
     "autoload": {
         "psr-0": {
