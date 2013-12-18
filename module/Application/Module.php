@@ -21,20 +21,6 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
 
-        // Fork of EpdModuleLayout, except this also handles subnamespaces
-        $e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
-            $controller      = $e->getTarget();
-            $controllerClass = get_class($controller);
-            
-            $pos = strpos($controllerClass, 'Controller');
-            $moduleNamespace = substr($controllerClass, 0, $pos -1);
-
-            $config = $e->getApplication()->getServiceManager()->get('config');
-            if (isset($config['module_layouts'][$moduleNamespace])) {
-                $controller->layout($config['module_layouts'][$moduleNamespace]);
-            }
-        }, 100);
-
     }
 
     public function getConfig() {
