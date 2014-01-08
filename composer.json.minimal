@@ -1,0 +1,42 @@
+{
+    "name": "scaled/skeleton",
+    "description": "Skeleton ready for module development. Doctrine2, Public Assets, DeviceAware ready",
+    "keywords": ["ScaledSkeleton", "Skeleton", "Doctrine2"],
+    "type": "Skeleton",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Trond Albinussen",
+            "email": "trond.albinussen@gmail.com",
+            "role": "System Architect"
+        }
+    ],
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.zendframework.com/"
+        },
+        {
+            "type": "vcs",
+            "url": "git+ssh://git.boost.no/srv/git_repos/labs-deviceatlas"
+        },
+        {
+            "type": "vcs",
+            "url": "git+ssh://git.boost.no/srv/git_repos/labslayout"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "2.2.*",
+        "doctrine/doctrine-orm-module": "0.7.*",
+        "doctrine/doctrine-module": "0.7.*",
+        "labs/labs-layout": "0.1.*",
+        "rwoverdijk/assetmanager": "1.3.*",
+        "labs/labs-deviceatlas": "0.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Application\\": "module/Application/src/"
+        }
+    }
+}
