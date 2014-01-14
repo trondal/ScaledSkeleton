@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7754529269cb4b605b42cf3e8ce42377",
+    "hash": "67e87ad654d241269c2cae27fe0f6f17",
     "packages": [
         {
             "name": "boost/boost-mapit",
@@ -752,16 +752,17 @@
         },
         {
             "name": "fpd",
-            "version": "0.9.11",
+            "version": "0.9.12",
             "source": {
                 "type": "git",
                 "url": "git+ssh://git.boost.no/srv/git_repos/fpd",
-                "reference": "614f644d994f7a9fd0f41639678d5c689985f1d2"
+                "reference": "a20b72e31d4f037ae970ab09847088153d98cc13"
             },
             "require": {
                 "boost/boost-mapit": "0.2.*",
                 "doctrine/doctrine-module": "0.7.*",
                 "doctrine/doctrine-orm-module": "0.7.*",
+                "labs/labs-analytics": "0.1.*",
                 "labs/labs-deviceatlas": "0.1.*",
                 "labs/labs-layout": "0.1.*",
                 "php": ">=5.3",
@@ -782,7 +783,7 @@
                 "fpd",
                 "south-africa"
             ],
-            "time": "2014-01-07 15:03:55"
+            "time": "2014-01-14 12:15:14"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -948,6 +949,39 @@
                 "minification"
             ],
             "time": "2013-07-19 00:03:27"
+        },
+        {
+            "name": "labs/labs-analytics",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "git+ssh://git.boost.no/srv/git_repos/labsanalytics",
+                "reference": "0928e0bef0b92ed840e0f68bbca193dbecc47c8e"
+            },
+            "require": {
+                "php": ">=5.3",
+                "slm/google-analytics": "v0.3.1",
+                "zendframework/zendframework": "2.2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Labs\\Analytics\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Front for Google Analytics Services",
+            "keywords": [
+                "Analytics",
+                "Google Analytics",
+                "Labs"
+            ],
+            "time": "2014-01-14 11:40:42"
         },
         {
             "name": "labs/labs-deviceatlas",
@@ -1146,6 +1180,50 @@
                 "zf2"
             ],
             "time": "2013-12-05 22:17:38"
+        },
+        {
+            "name": "slm/google-analytics",
+            "version": "v0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/juriansluiman/SlmGoogleAnalytics.git",
+                "reference": "3e067a9e7d063c8fb58295f901a598f4562666b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/juriansluiman/SlmGoogleAnalytics/zipball/3e067a9e7d063c8fb58295f901a598f4562666b0",
+                "reference": "3e067a9e7d063c8fb58295f901a598f4562666b0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3.",
+                "zendframework/zendframework": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jurian Sluiman ",
+                    "email": "jurian@juriansluiman.nl",
+                    "homepage": "http://juriansluiman.nl/en/"
+                }
+            ],
+            "description": "Google Analytics tracking integration for Zend Framework 2",
+            "homepage": "https://github.com/juriansluiman/SlmGoogleAnalytics",
+            "keywords": [
+                "ga",
+                "google analytics",
+                "zf2"
+            ],
+            "time": "2013-07-14 10:31:06"
         },
         {
             "name": "symfony/console",

@@ -40,6 +40,10 @@
         {
             "type": "vcs",
             "url": "git+ssh://git.boost.no/srv/git_repos/labslayout"
+        },
+        {
+            "type": "vcs",
+            "url": "git+ssh://git.boost.no/srv/git_repos/labsanalytics"
         }
     ],
     "require": {
